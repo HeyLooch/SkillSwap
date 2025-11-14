@@ -5,7 +5,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getFilteredUsersThunk } from './actions';
 import { toggleLikeAction } from '../../services/users/actions';
 
-type FilteredUsersState = {
+interface FilteredUsersState {
   users: TUser[];
   isLoading: boolean;
   error: string | null;

@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { TCategory, TSubcategory } from '@api/types';
 import { getCategoriesThunk } from './actions';
 
-type CategoriesState = {
+interface CategoriesState {
   categories: TCategory[];
   subcategories: TSubcategory[];
   isLoading: boolean;

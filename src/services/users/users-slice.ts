@@ -5,7 +5,7 @@ import { getUsersThunk, toggleLikeAction } from './actions';
 import { TUser } from '@api/types';
 import { getUserLikesThunk } from '../../services/user/actions';
 
-type UsersState = {
+interface UsersState {
   offerUser: TUser | null; //пользователь с кем делаем обмен
   users: TUser[];
   isLoading: boolean;

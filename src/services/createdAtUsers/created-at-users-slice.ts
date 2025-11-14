@@ -5,7 +5,7 @@ import { TUser } from '@api/types';
 import { getCreatedAtUsersThunk } from './actions';
 import { toggleLikeAction } from '../../services/users/actions';
 
-type CreatedAtUsersState = {
+interface CreatedAtUsersState {
   users: TUser[];
   isLoading: boolean;
   error: string | null;

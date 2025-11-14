@@ -5,7 +5,7 @@ import { TUser } from '@api/types';
 import { getPopularUsersThunk } from './actions';
 import { toggleLikeAction } from '../../services/users/actions';
 
-type PopularUsersState = {
+interface PopularUsersState {
   users: TUser[];
   isLoading: boolean;
   error: string | null;

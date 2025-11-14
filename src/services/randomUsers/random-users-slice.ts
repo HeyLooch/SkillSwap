@@ -5,7 +5,7 @@ import { TUser } from '@api/types';
 import { getRandomUsersThunk } from './actions';
 import { toggleLikeAction } from '../../services/users/actions';
 
-type RandomUsersState = {
+interface RandomUsersState {
   users: TUser[];
   isLoading: boolean;
   error: string | null;

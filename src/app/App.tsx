@@ -1,6 +1,6 @@
 // src/app/App.tsx
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import {
@@ -17,7 +17,6 @@ import { NotFoundPage } from "../pages/not-found-page/NotFoundPage";
 
 //То, что есть
 import { HomePage } from "../pages/HomePage";
-import { RegisterStep2 } from "../features/auth/RegisterStep2";
 import { ProfilePage } from "../pages/profile/ProfilePage";
 
 // Страницы регистрации
@@ -35,7 +34,6 @@ import { getCategoriesThunk } from "../services/categories/actions";
 import { getUserLikesThunk } from "../services/user/actions";
 
 import { OfferPage } from "../pages/Offer/OfferPage";
-import { RegisterStep2Data } from "../features/auth/RegisterStep2";
 import { getPopularUsersThunk } from "../services/popularUsers/actions";
 
 import { ScrollToTop } from "../features/scrollToTop/ScrollToTop";
@@ -58,7 +56,7 @@ export const App: React.FC = () => {
   // const API_USER_ID = Number(import.meta.env.VITE_AUTH_USER_ID);
 
   // Подгружаем данные при старте
-  React.useEffect(() => {
+    useEffect(() => {
     dispatch(getOffersThunk()); //подгружаем все офферы
 
     dispatch(getUsersThunk(1));
@@ -74,11 +72,11 @@ export const App: React.FC = () => {
   const offers = useSelector(getOffers);
 
   // лайки грузятся при смене пользователя
-  React.useEffect(() => {
+  useEffect(() => {
     if (currentUser) {
       dispatch(getUserLikesThunk(currentUser.id));
     }
-  }, [dispatch, currentUser, offers]);
+  }, [currentUser, offers]);
 
   return (
     <BrowserRouter>

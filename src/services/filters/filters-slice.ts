@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GENDERS, TGender } from '@api/types';
 import { SKILL_TYPES, TSkillType } from '../../shared/types/filters';
 
-type FiltersState = {
+interface FiltersState {
   skillType: TSkillType;
   gender: TGender;
   places: string[];

@@ -1,8 +1,7 @@
 // src\widgets\header\Header.tsx
 
-import { FC, useEffect, useState, useCallback, useRef } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
 import { Logo } from "../../shared/ui/logo/Logo";
 import { Button } from "../../shared/ui/button/Button";
 import { NotificationWidget } from "../notification-widget/NotificationWidget";
@@ -18,7 +17,9 @@ import { RootState } from "@store";
 import { getRandomUsers } from "../../services/randomUsers/random-users-slice";
 import { setTextForSearch } from "../../services/filters/filters-slice";
 import { reloadFilteredUsers } from "../../services/filteredUsers/actions";
+import useDebounced from "../../shared/hooks/useDebounced";
 import clsx from "clsx";
+import styles from "./Header.module.css";
 
 export const POPUP_TYPES = {
   SKILLS: "skills",
@@ -28,14 +29,6 @@ export const POPUP_TYPES = {
 
 export type PopupType = (typeof POPUP_TYPES)[keyof typeof POPUP_TYPES] | null;
 
-function useDebounced<T>(value: T, ms = 300) {
-  const [v, setV] = useState(value);
-  useEffect(() => {
-    const t = setTimeout(() => setV(value), ms);
-    return () => clearTimeout(t);
-  }, [value, ms]);
-  return v;
-}
 export const Header: FC = () => {
   const dispatch = useDispatch();
   const [isOpenPopup, setOpenPopup] = useState<PopupType>(null);

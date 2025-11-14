@@ -12,6 +12,7 @@ import { getPopularUsersThunk } from '../services/popularUsers/actions';
 import { getCreatedAtUsersThunk } from '../services/createdAtUsers/actions';
 import { getRandomUsersThunk } from '../services/randomUsers/actions';
 import { reloadFilteredUsers } from '../services/filteredUsers/actions';
+import { resetFilteredUsers } from '../services/filteredUsers/filtered-users-slice';
 import {
   isFiltersEmpty,
   resetFilters,
@@ -20,7 +21,6 @@ import {
   setSkillType,
   setSubcategories,
 } from '../services/filters/filters-slice';
-import { resetFilteredUsers } from '../services/filteredUsers/filtered-users-slice';
 
 // Types
 import { GENDERS, TGender } from '@api/types';

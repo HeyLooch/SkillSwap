@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getPlacesThunk } from './actions';
 import { TPlace } from '@api/types';
 
-type PlacesState = {
+interface PlacesState {
   places: TPlace[];
   isLoading: boolean;
   error: string | null;

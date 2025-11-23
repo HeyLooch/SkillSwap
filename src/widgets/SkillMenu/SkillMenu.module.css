@@ -1,6 +1,6 @@
 .container {
   position: absolute;
-  
+  left: 0;
   display: flex;
   max-width: 1136px;
   border: 1px solid #69735D;
@@ -9,4 +9,12 @@
   box-sizing: border-box;
   padding: 60px;
   margin: 0;
+}
+
+.loaderContainer {
+  position: absolute;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 680px;
 }

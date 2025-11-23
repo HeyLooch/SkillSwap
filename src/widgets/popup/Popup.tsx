@@ -14,21 +14,24 @@ export const Popup = ({ children, isOpen, onClose }:TPopupProps) => {
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (popupRef.current && !popupRef.current.contains(e.target as Node)) {
+      const target = e.target as HTMLElement;
+
+      if (target.closest("[data-popup-trigger]")) return;
+      if (popupRef.current && !popupRef.current.contains(target as Node)) {
         onClose();
       }
     };
-    const handle = (e:KeyboardEvent) => {
+    const handleEsc = (e:KeyboardEvent) => {
       e.key === 'Escape' && onClose();
     };
 
     if(isOpen) {
       document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener('keydown', handle);
+      document.addEventListener('keydown', handleEsc);
     }
     return () => {
-      document.removeEventListener('keydown', handle);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('keydown', handleEsc);
     };
   }, [isOpen, onClose]);
 

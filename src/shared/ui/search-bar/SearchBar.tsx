@@ -8,7 +8,7 @@ interface SearchBarProps {
   maxWidth?: number;
   placeholder?: string;
   value: string;
-  onChange: (q: string) => void;
+  onChange: (e: string) => void;
 }
 
 export const SearchBar: FC<SearchBarProps> = ({

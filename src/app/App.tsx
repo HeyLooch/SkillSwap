@@ -7,7 +7,6 @@ import {
   DropdownDemo,
   DropdownGroupedDemo,
   Footer,
-  GridList,
   Header,
   SkillForm,
 } from "@widgets";
@@ -25,10 +24,11 @@ import { RegistrationStep2 } from "../pages/registration/RegistrationStep2";
 import { RegistrationStep3 } from "../pages/registration/RegistrationStep3";
 
 //Данные/типы/стор (для каталога)
-import { RootState, useDispatch } from "@store";
+import { useDispatch } from "@store";
 import { useSelector } from "@store";
-import { AuthForm, FilterSection } from "@features";
+import { AuthForm } from "@features";
 
+import { getCurrentUser } from "../services/user/user-slice";
 import { getPlacesThunk } from "../services/places/actions";
 import { getCategoriesThunk } from "../services/categories/actions";
 import { getUserLikesThunk } from "../services/user/actions";
@@ -42,33 +42,28 @@ import { getCreatedAtUsersThunk } from "../services/createdAtUsers/actions";
 import { getRandomUsersThunk } from "../services/randomUsers/actions";
 
 import { About } from "../pages/about/About";
-// import { getFilteredUsersThunk } from "../services/filteredUsers/actions";
-import { GENDERS, TGender } from "@api/types";
 import { getOffersThunk } from "../services/offers/actions";
 import { getOffers } from "../services/offers/offers-slice";
 import { getUsersThunk } from "../services/users/actions";
 import { RegistrationFlow } from "../features/registration/RegistrationFlow";
+// import { getFilteredUsersThunk } from "../services/filteredUsers/actions";
 
 import styles from "./App.module.css";
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
   // const API_USER_ID = Number(import.meta.env.VITE_AUTH_USER_ID);
-
-  // Подгружаем данные при старте
     useEffect(() => {
-    dispatch(getOffersThunk()); //подгружаем все офферы
-
+    dispatch(getOffersThunk());
     dispatch(getUsersThunk(1));
     dispatch(getPopularUsersThunk(1));
     dispatch(getCreatedAtUsersThunk(1));
     dispatch(getRandomUsersThunk(1));
-
     dispatch(getPlacesThunk());
     dispatch(getCategoriesThunk());
   }, [dispatch]);
 
-  const currentUser = useSelector((s: RootState) => s.user.user);
+  const currentUser = useSelector(getCurrentUser);
   const offers = useSelector(getOffers);
 
   // лайки грузятся при смене пользователя
@@ -82,16 +77,15 @@ export const App: React.FC = () => {
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-          <Route path="auth/register" element={<RegistrationFlow />} />
+        <Route path="auth/register" element={<RegistrationFlow />} />
         <Route element={<Layout />}>
-          {/*То, что есть*/}
           <Route index element={<HomePage />} />
-          <Route path="skills" element={<CatalogContent />} />
           <Route path="auth/login" element={<LoginContent />} />
           <Route path="skill/new" element={<SkillFormContent />} />
           <Route path="skills/:id" element={<OfferPage />} />
           <Route path="demo/dropdowns" element={<DropdownsDemoContent />} />
           <Route path="about" element={<About />} />
+          {/* <Route path="skills" element={<CatalogContent />} /> */}
 
           {/* Страницы регистрации */}
           <Route
@@ -163,32 +157,32 @@ const Layout: React.FC = () => (
 );
 
 //Каталог (FilterSection + GridList)
-const CatalogContent: React.FC = () => {
-  const users = useSelector((s: RootState) => s.users.users);
+// const CatalogContent: React.FC = () => {
+//   const users = useSelector((s: RootState) => s.users.users);
 
-  const [selectedGender, setSelectedGender] = React.useState<TGender>(
-    GENDERS.UNSPECIFIED
-  );
-  const [selectedPlaces, setSelectedPlaces] = React.useState<string[]>([]);
+//   const [selectedGender, setSelectedGender] = React.useState<TGender>(
+//     GENDERS.UNSPECIFIED
+//   );
+//   const [selectedPlaces, setSelectedPlaces] = React.useState<string[]>([]);
 
-  return (
-    <section className="page page-catalog">
-      <FilterSection
-        onGenderChange={setSelectedGender}
-        onPlacesChange={setSelectedPlaces}
-        selectedGender={selectedGender}
-        selectedPlaces={selectedPlaces}
-      />
-      <GridList
-        users={users}
-        // subCategories={subCategories}
-        loading={false}
-        hasMore={false}
-        onLoadMore={() => {}}
-      />
-    </section>
-  );
-};
+//   return (
+//     <section className="page page-catalog">
+//       <FilterSection
+//         onGenderChange={setSelectedGender}
+//         onPlacesChange={setSelectedPlaces}
+//         selectedGender={selectedGender}
+//         selectedPlaces={selectedPlaces}
+//       />
+//       <GridList
+//         users={users}
+//         // subCategories={subCategories}
+//         loading={false}
+//         hasMore={false}
+//         onLoadMore={() => {}}
+//       />
+//     </section>
+//   );
+// };
 
 //Логин — AuthForm
 const LoginContent: React.FC = () => (

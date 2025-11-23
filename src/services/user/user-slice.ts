@@ -36,7 +36,7 @@ export const userSlice = createSlice({
     }
   },
   selectors: {
-    getUser: (state) => state.user,
+    getCurrentUser: (state) => state.user,
     getOffers: (state) => state.currentOffers
   },
   extraReducers: builder => {
@@ -84,12 +84,11 @@ export const userSlice = createSlice({
 });
 
 // старые имена (используются сейчас в проекте)
-export const { getUser } = userSlice.selectors;
 export const { setUser } = userSlice.actions;
 
 // новые имена (рекомендуется использовать дальше)
 export const {
-  getUser: getCurrentUser,
+  getCurrentUser,
   getOffers
 } = userSlice.selectors;
 

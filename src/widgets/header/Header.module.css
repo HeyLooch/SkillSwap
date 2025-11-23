@@ -7,7 +7,7 @@
   max-height: 104px;
   box-sizing: border-box;
   margin-bottom: 32px;
-  padding: 42px 36px 26px;
+  padding: 20px 36px 26px;
   z-index: 2;
 }
 
@@ -27,6 +27,7 @@
   color: #253017;
   background-color: transparent;
   letter-spacing: 0.0224em;
+  cursor: pointer;
 }
 
 .dropButton {
@@ -44,7 +45,6 @@ li:has(img) {
   height: 24px;
   margin-left: 4px;
   align-self: center;
-  cursor: pointer;
 }
 
 /* Правая секция с иконками и кнопками */
@@ -92,6 +92,7 @@ li:has(img) {
   gap: 8px;
   min-width: fit-content; /* Добавляем минимальную ширину */
   flex-shrink: 0; /* Запрещаем сжатие */
+  cursor: pointer;
 }
 
 .userName {
@@ -106,4 +107,8 @@ li:has(img) {
   height: 48px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.popupWrapper {
+  position: relative;
 }

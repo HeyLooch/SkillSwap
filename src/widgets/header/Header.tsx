@@ -47,7 +47,7 @@ export const Header: FC = () => {
   }, [debounced]);
 
   const togglePopup = (popup: PopupType) => {
-    setOpenPopup((prev) => (prev === popup ? null : popup));
+    setOpenPopup(prev => (prev === popup ? null : popup));
   };
 
   const closePopup = () => setOpenPopup(null);
@@ -65,11 +65,6 @@ export const Header: FC = () => {
   return (
     <header
       className={styles.header}
-      style={
-        currentUser
-          ? { maxHeight: "116px", padding: "42px 36px 26px" }
-          : { maxHeight: "104px", padding: "36px 36px 20px" }
-      }
     >
       <Link to="/">
         <Logo />
@@ -81,17 +76,16 @@ export const Header: FC = () => {
             <Link
               to="/about"
               className={styles.link}
-              onClick={() => console.log("Click on About link")}
             >
               О проекте
             </Link>
           </li>
           <li className={styles.li}>
             <button
+              data-popup-trigger
               className={clsx(styles.link, styles.dropButton)}
               onClick={(e) => {
-                e.stopPropagation();
-                togglePopup(POPUP_TYPES.SKILLS)
+                togglePopup(POPUP_TYPES.SKILLS);
               }}
             >
               Все навыки
@@ -130,6 +124,7 @@ export const Header: FC = () => {
               <Icon name="moon" size="s" />
             </button>
             <button
+              data-popup-trigger
               className={styles.notificationButton}
               onClick={() => togglePopup(POPUP_TYPES.NOTIFICATIONS)}
             >
@@ -146,9 +141,9 @@ export const Header: FC = () => {
         {/* Блок пользователя или кнопки входа */}
         {currentUser ? (
           <div
+            data-popup-trigger
             className={styles.userAuthWrapper}
             onClick={() => togglePopup(POPUP_TYPES.PROFILE)}
-            style={{ cursor: "pointer" }}
           >
             <span className={styles.userName}>{currentUser.name}</span>
             <img
@@ -156,6 +151,20 @@ export const Header: FC = () => {
               alt={currentUser.name}
               className={styles.userAvatar}
             />
+            <div className="popupWrapper">
+            <Popup
+              isOpen={isOpenPopup === POPUP_TYPES.NOTIFICATIONS}
+              onClose={closePopup}
+            >
+              <NotificationWidget />
+            </Popup>
+            <Popup
+              isOpen={isOpenPopup === POPUP_TYPES.PROFILE}
+              onClose={closePopup}
+            >
+              <ProfilePopup onClose={closePopup} />
+            </Popup>
+            </div>
           </div>
         ) : (
           <div className={styles.buttonsWrapper}>
@@ -171,22 +180,11 @@ export const Header: FC = () => {
         )}
       </div>
 
-      {/* Попапы */}
-      {currentUser ? (
-        <Popup
-          isOpen={isOpenPopup === POPUP_TYPES.NOTIFICATIONS}
-          onClose={closePopup}
-        >
-          <NotificationWidget />
-        </Popup>
-      ) : null}
-
-      <Popup isOpen={isOpenPopup === POPUP_TYPES.SKILLS} onClose={closePopup}>
+      <Popup
+        isOpen={isOpenPopup === POPUP_TYPES.SKILLS}
+        onClose={closePopup}
+      >
         <SkillMenu />
-      </Popup>
-
-      <Popup isOpen={isOpenPopup === POPUP_TYPES.PROFILE} onClose={closePopup}>
-        <ProfilePopup onClose={closePopup} />
       </Popup>
 
     </header>

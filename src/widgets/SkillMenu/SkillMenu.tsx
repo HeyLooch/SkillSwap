@@ -1,27 +1,21 @@
-import { useEffect, useState } from 'react';
-import styles from './SkillMenu.module.css';
 import { SkillMenuCategories } from './skillMenuCategory/skillMenuCategory';
-import { getSkillsCategoriesApi, getSkillsSubCategoriesApi } from '../../api/Api';
-import { TCategory, TSubcategory } from '../../api/types';
+import { useSelector } from '@store';
+import { getCategories, getSubcategories, getLoadingCatSubcat } from '../../services/categories/categories-slice';
+import { Loader } from '../../shared/ui/loader/Loader';
+import styles from './SkillMenu.module.css';
 
 export const SkillMenu = () => {
-  const [categories, setCategories] = useState<TCategory[]>([]);
-  const [subcategories, setSubcategories] = useState<TSubcategory[]>([]);
+  const categories = useSelector(getCategories);
+  const subcategories = useSelector(getSubcategories);
+  const isLoadingCatSubcat = useSelector(getLoadingCatSubcat);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const categoriesResponse = await getSkillsCategoriesApi();
-        const subcategoriesResponse = await getSkillsSubCategoriesApi();
-        setCategories(categoriesResponse.categories);
-        setSubcategories(subcategoriesResponse.subcategories);
-      } catch (error) {
-        console.error("Ошибка загрузки данных:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  if (isLoadingCatSubcat) {
+    return (
+      <div className={styles.loaderContainer}>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div className={styles.container}>
@@ -32,3 +26,4 @@ export const SkillMenu = () => {
     </div>
   );
 };
+

@@ -24,7 +24,8 @@ export const categoriesSlice = createSlice({
   reducers: {},
   selectors: {
     getCategories: (state) => state.categories,
-    getSubcategories: (state) => state.subcategories
+    getSubcategories: (state) => state.subcategories,
+    getLoadingCatSubcat: (state) => state.isLoading
   },
   extraReducers: builder => {
     builder
@@ -44,5 +45,5 @@ export const categoriesSlice = createSlice({
   }
 });
 
-export const { getCategories, getSubcategories } = categoriesSlice.selectors;
+export const { getCategories, getSubcategories, getLoadingCatSubcat } = categoriesSlice.selectors;
 export const categoriesReducer = categoriesSlice.reducer;

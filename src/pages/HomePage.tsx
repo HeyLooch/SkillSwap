@@ -1,13 +1,10 @@
-// src\pages\HomePage.tsx
-
-// External libs
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-
-// Store
 import { RootState, useDispatch } from '@store';
 
-// Services (slices & actions)
+import { GENDERS, TGender } from '@api/types';
+import { SKILL_TYPES, TSkillType } from '../shared/types/filters';
+
 import { getPopularUsersThunk } from '../services/popularUsers/actions';
 import { getCreatedAtUsersThunk } from '../services/createdAtUsers/actions';
 import { getRandomUsersThunk } from '../services/randomUsers/actions';
@@ -22,24 +19,15 @@ import {
   setSubcategories,
 } from '../services/filters/filters-slice';
 
-// Types
-import { GENDERS, TGender } from '@api/types';
-import { SKILL_TYPES, TSkillType } from '../shared/types/filters';
-
-// Features
 import { FilterSection } from '@features';
 import { SkillFilters } from '../features/filters/SkillFilters';
 import { FiltersContainer } from '../features/filters/FiltersContainer';
 import { ActiveFiltersBar } from '../features/filters/ActiveFiltersBar';
 
-// Widgets
 import { GridList } from '@widgets';
 import { CardShowcase, SHOWCASE_TITLES } from '../widgets/cardShowcase/CardShowcase';
 
-// Shared
 import { Icon } from '../shared/ui/icon/Icon';
-
-// Styles
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {
@@ -149,7 +137,6 @@ export const HomePage = () => {
     filters.gender !== GENDERS.UNSPECIFIED ||
     filters.places.length > 0;
 
-  // -------------------- Рендер --------------------
   return (
     <div className={styles.homePageWrapper}>
 

@@ -29,7 +29,7 @@ TOffer,
       daysSinceOffer: 0,
       daysSinceAccept: 0,
       sawOffer: 0,
-      sawAccept: 0,
+      sawAccept: 0
     };
 
     return offer;

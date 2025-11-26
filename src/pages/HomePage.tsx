@@ -11,12 +11,16 @@ import { getRandomUsersThunk } from '../services/randomUsers/actions';
 import { reloadFilteredUsers } from '../services/filteredUsers/actions';
 import { resetFilteredUsers } from '../services/filteredUsers/filtered-users-slice';
 import {
-  isFiltersEmpty,
-  resetFilters,
-  setGender,
-  setPlaces,
+  getSkillType,
+  getSubcategories,
+  getGender,
+  getPlaces,
   setSkillType,
   setSubcategories,
+  setGender,
+  setPlaces,
+  isFiltersEmpty,
+  resetFilters,
 } from '../services/filters/filters-slice';
 
 import { FilterSection } from '@features';
@@ -79,10 +83,10 @@ export const HomePage = () => {
   // *************************************************
   // отфильтрованные пользователи
   const filters = useSelector((state: RootState) => state.filters);
-  const selectedGender = useSelector((state: RootState) => state.filters.gender);
-  const selectedPlaces = useSelector((state: RootState) => state.filters.places);
-  const selectedSubcategories = useSelector((state: RootState) => state.filters.subcategories);
-  const selectedSkillType = useSelector((state: RootState) => state.filters.skillType);
+  const selectedGender = useSelector(getGender);
+  const selectedPlaces = useSelector(getPlaces);
+  const selectedSubcategories = useSelector(getSubcategories);
+  const selectedSkillType = useSelector(getSkillType);
 
   const { 
     users: filteredUsers,

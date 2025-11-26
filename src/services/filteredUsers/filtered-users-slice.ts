@@ -11,7 +11,7 @@ interface FilteredUsersState {
   error: string | null;
   page: number;
   hasMore: boolean;
-};
+}
 
 const initialState: FilteredUsersState = {
   users: [],

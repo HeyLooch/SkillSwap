@@ -31,6 +31,7 @@ export type TUser = {
   about: string; //Описание пользователя (вводится при регистрации)
   likedByMe: boolean;
   random: number;
+  isOffered?: boolean; //меняем флаг когда offerUser предложен обмен
 };
 
 export type TGetFilteredUsersArgs = {
@@ -116,8 +117,8 @@ export type TOffer = {
   "daysSinceOffer": number;
   "daysSinceAccept": number;
   "accept": 0 | 1;
-  "sawOffer": 0 | 1,
-  "sawAccept": 0 | 1,
+  "sawOffer": 0 | 1;
+  "sawAccept": 0 | 1;
 };
 
 export type TResponseOffers = {

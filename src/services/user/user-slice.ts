@@ -4,7 +4,7 @@ import { TNotificationEvent, TUser } from '../../api/types';
 import { getUserLikesThunk, getUserThunk, logoutThunk } from './actions';
 
 export interface UserState {
-  user: TUser | null;
+  сurrentUser: TUser | null;
   likes: number[]; // id пользователей, которых лайкнул авторизованный юзер
   currentOffers: TNotificationEvent[];
   isAuthChecked: boolean;
@@ -13,7 +13,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  user: null,   // это тот, кто сейчас залогинился
+  сurrentUser: null,
   likes: [],
   currentOffers: [],
   isAuthChecked: false,
@@ -25,8 +25,8 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<TUser>) => {
-      state.user = action.payload;
+    setCurrentUser: (state, action: PayloadAction<TUser>) => {
+      state.сurrentUser = action.payload;
     },
     setCurrentOffers: (state, action: PayloadAction<TNotificationEvent[]>) => {
       state.currentOffers = action.payload;
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
     }
   },
   selectors: {
-    getCurrentUser: (state) => state.user,
+    getCurrentUser: (state) => state.сurrentUser,
     getOffers: (state) => state.currentOffers
   },
   extraReducers: builder => {
@@ -48,7 +48,7 @@ export const userSlice = createSlice({
 
     .addCase(getUserThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload;
+        state.сurrentUser = action.payload;
     })
     .addCase(getUserThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -72,7 +72,7 @@ export const userSlice = createSlice({
       state.error = null;
     })
     .addCase(logoutThunk.fulfilled, (state) => {
-      state.user = null;
+      state.сurrentUser = null;
       state.isAuthChecked = false;
       state.isLoading = false;
     })
@@ -82,18 +82,14 @@ export const userSlice = createSlice({
     });
   }
 });
-
-// старые имена (используются сейчас в проекте)
-export const { setUser } = userSlice.actions;
-
-// новые имена (рекомендуется использовать дальше)
+ 
 export const {
   getCurrentUser,
   getOffers
 } = userSlice.selectors;
-
+ 
 export const {
-  setUser: setCurrentUser,
+  setCurrentUser,
   setCurrentOffers,
   addCurrentOffers
 } = userSlice.actions;

@@ -14,12 +14,12 @@
             "gitHubUrl": "https://github.com/morfekta",
             "photo": "team2.png"
         },
-        {
+         {
             "id": 3,
-            "name": "Анна",
+            "name": "Дарья",
             "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/malannly",
-            "photo": "team3.png"
+            "gitHubUrl": "https://github.com/DariaBashilova",
+            "photo": "team6.png"
         },
         {
             "id": 4,
@@ -30,45 +30,17 @@
         },
         {
             "id": 5,
-            "name": "Данила",
-            "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/future-fashion-hub",
-            "photo": "team5.png"
-        },
-        {
-            "id": 6,
-            "name": "Дарья",
-            "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/DariaBashilova",
-            "photo": "team6.png"
-        },
-        {
-            "id": 7,
             "name": "Ольга",
             "role": "Frontend developer",
             "gitHubUrl": "https://github.com/OlgaNamm",
             "photo": "team7.png"
         },
         {
-            "id": 8,
-            "name": "Владислав",
+            "id": 6,
+            "name": "Данила",
             "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/Vlados2120",
-            "photo": "team8.png"
-        },
-        {
-            "id": 9,
-            "name": "Максим",
-            "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/Nomad949",
-            "photo": "team4.png"
-        },
-        {
-            "id": 10,
-            "name": "Сергей",
-            "role": "Frontend developer",
-            "gitHubUrl": "https://github.com/buldogshaggy",
-            "photo": "team1.png"
+            "gitHubUrl": "https://github.com/future-fashion-hub",
+            "photo": "team5.png"
         }
     ]
 }

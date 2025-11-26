@@ -12,7 +12,7 @@ interface UsersState {
   error: string | null;
   page: number; // страница для пагинации
   hasMore: boolean;
-};
+}
 
 const initialState: UsersState = {
   offerUser: null,
@@ -50,6 +50,7 @@ export const usersSlice = createSlice({
     },
   },
   selectors: {
+    getUsers: (state) => state.users,
     getOfferUser: (state) => state.offerUser,
     getPlainUsers: (state) => state.users
   },
@@ -86,7 +87,7 @@ export const usersSlice = createSlice({
         state.isLoading = false;
         state.error = action.error.message || 'Ошибка загрузки пользователей';
       })
-      // фокус!!! ловим чужие события
+      // Ловим чужие события
       // проставляем лайки у всех пользователей
       // на основании списка лайков залогиненного пользователя
       .addCase(getUserLikesThunk.fulfilled, (state, action) => {
@@ -107,6 +108,6 @@ export const usersSlice = createSlice({
   }
 });
 
-export const { getOfferUser, getPlainUsers } = usersSlice.selectors;
+export const { getUsers, getOfferUser, getPlainUsers } = usersSlice.selectors;
 export const { setPage, setHasMore, resetUsers, setOfferUser } = usersSlice.actions;
 export const usersReducer = usersSlice.reducer;

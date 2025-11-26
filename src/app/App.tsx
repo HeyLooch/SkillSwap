@@ -43,7 +43,7 @@ import { getRandomUsersThunk } from "../services/randomUsers/actions";
 
 import { About } from "../pages/about/About";
 import { getOffersThunk } from "../services/offers/actions";
-import { getOffers } from "../services/offers/offers-slice";
+// import { getOffers } from "../services/offers/offers-slice";
 import { getUsersThunk } from "../services/users/actions";
 import { RegistrationFlow } from "../features/registration/RegistrationFlow";
 // import { getFilteredUsersThunk } from "../services/filteredUsers/actions";
@@ -64,14 +64,15 @@ export const App: React.FC = () => {
   }, [dispatch]);
 
   const currentUser = useSelector(getCurrentUser);
-  const offers = useSelector(getOffers);
+  // const offers = useSelector(getOffers);
 
   // лайки грузятся при смене пользователя
   useEffect(() => {
     if (currentUser) {
       dispatch(getUserLikesThunk(currentUser.id));
     }
-  }, [currentUser, offers]);
+  // }, [currentUser, offers]);
+  }, [currentUser]);
 
   return (
     <BrowserRouter>
@@ -147,7 +148,7 @@ export const App: React.FC = () => {
 
 //Общий Layout (для всех КРОМЕ главной), чтобы не дублировать везде хедер и футер
 const Layout: React.FC = () => (
-  <div className="layout">
+  <div className={styles.layout}>
     <Header />
     <main className={styles.main}>
       <Outlet />

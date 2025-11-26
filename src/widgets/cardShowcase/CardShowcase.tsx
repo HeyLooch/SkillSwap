@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement, cloneElement } from "react";
 import styles from "./CardShowcase.module.css";
 
 export const SHOWCASE_TITLES = {
@@ -74,7 +74,7 @@ export const CardShowcase = ({
       </div>
       <div className={styles.childsWrapper}>
         {children &&
-        React.cloneElement(children, {
+        cloneElement(children, {
           // здесь чилдрену можно передать какой-нибудь пропс 
         })}
       </div>

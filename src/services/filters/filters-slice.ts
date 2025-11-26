@@ -6,17 +6,17 @@ import { SKILL_TYPES, TSkillType } from '../../shared/types/filters';
 
 interface FiltersState {
   skillType: TSkillType;
+  subcategories: number[];
   gender: TGender;
   places: string[];
-  subcategories: number[];
   text_for_search: string;
-};
+}
 
 const getInitialState = (): FiltersState => ({
   skillType: SKILL_TYPES.ALL,
+  subcategories: [],
   gender: GENDERS.UNSPECIFIED,
   places: [],
-  subcategories: [],
   text_for_search: ''
 });
 
@@ -38,6 +38,9 @@ export const filtersSlice = createSlice({
     setSkillType: (state, action: PayloadAction<TSkillType>) => {
       state.skillType = action.payload;
     },
+    setSubcategories: (state, action: PayloadAction<number[]>) => {
+      state.subcategories = action.payload;
+    },
     setGender: (state, action: PayloadAction<TGender>) => {
       state.gender = action.payload;
     },
@@ -47,19 +50,31 @@ export const filtersSlice = createSlice({
     setTextForSearch: (state, action: PayloadAction<string>) => {
       state.text_for_search = action.payload;
     },
-    setSubcategories: (state, action: PayloadAction<number[]>) => {
-      state.subcategories = action.payload;
-    },
     resetFilters: () => getInitialState(),
   },
+  selectors: {
+    getSkillType: (state) => state.skillType,
+    getSubcategories: (state) => state.subcategories,
+    getGender: (state) => state.gender,
+    getPlaces: (state) => state.places
+  }
 });
+
+
+export const {
+  getSkillType,
+  getSubcategories,
+  getGender,
+  getPlaces
+} = filtersSlice.selectors;
 
 export const { 
   setSkillType,
+  setSubcategories,
   setGender,
   setPlaces,
   setTextForSearch,
-  resetFilters,
-  setSubcategories
+  resetFilters
 } = filtersSlice.actions;
+
 export const filtersReducer = filtersSlice.reducer;

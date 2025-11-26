@@ -5,14 +5,14 @@ import { addOfferThunk, getOffersThunk } from './actions';
 
 export interface OffersState {
   offers: TOffer[];
-  isOfferCreated: boolean;
+  offersByMe: number[];
   isLoading: boolean;
   error: string | null;
 }
 
 const initialState: OffersState = {
   offers: [],
-  isOfferCreated: false,
+  offersByMe: [],
   isLoading: false,
   error: null
 };
@@ -21,15 +21,16 @@ export const offersSlice = createSlice({
   name: 'offers',
   initialState,
   reducers: {
-    setIsOfferCreated: (state, action: PayloadAction<boolean>) => {
-      state.isOfferCreated = action.payload;
-      console.log(`state.isOfferCreated ${state.isOfferCreated}`);
-      
-  }
+    setOfferByMe: (state, action: PayloadAction<number>) => {
+      state.offersByMe.push(action.payload);
+    },
+    clearOffersByMe: (state) => {
+      state.offersByMe = [];
+    }
   },
   selectors: {
     getOffers: (state) => state.offers,
-    getIsOfferCreated: (state) => state.isOfferCreated
+    getOffersByMe: (state) => state.offersByMe
   },
   extraReducers: builder => {
     builder
@@ -54,18 +55,16 @@ export const offersSlice = createSlice({
     .addCase(addOfferThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.offers.push(action.payload);
-        state.isOfferCreated = true;
     })
     .addCase(addOfferThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.error.message || 'Ошибка создания предложения';
     })
-
   }
 });
 
-export const { getOffers, getIsOfferCreated } = offersSlice.selectors;
-export const { setIsOfferCreated } = offersSlice.actions;
+export const { getOffers, getOffersByMe } = offersSlice.selectors;
+export const { setOfferByMe, clearOffersByMe } = offersSlice.actions;
 
 export const offersReducer = offersSlice.reducer;
 

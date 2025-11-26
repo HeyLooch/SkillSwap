@@ -2,9 +2,6 @@
 
 import { FC, useEffect } from "react";
 import { useDispatch, useSelector } from "@store";
-import styles from "./NotificationWidget.module.css";
-import { Icon } from "../../shared/ui/icon/Icon";
-import { Button } from "../../shared/ui/button/Button";
 import {
   markAsSeen,
   deleteAllNotification,
@@ -13,11 +10,13 @@ import {
   getIsLoading,
   getUnseenCount
 } from "../../services/notifications/notification-slice"
-
 import { getNotificationThunk } from "../../services/notifications/actions";
 import { getCurrentUser } from "../../services/user/user-slice";
 import { NotificationTypes, TNotificationEvent } from "@api/types";
 import { getOffers } from "../../services/offers/offers-slice";
+import { Icon } from "../../shared/ui/icon/Icon";
+import { Button } from "../../shared/ui/button/Button";
+import styles from "./NotificationWidget.module.css";
 
 // Интерфейс для преобразования данных (если нужно)
 interface NotificationDisplay {
@@ -50,7 +49,7 @@ export const NotificationWidget: FC = () => {
     if (currentUserId) {
       dispatch(getNotificationThunk({userId: currentUserId, offers}));
     }
-  }, [currentUserId, dispatch]);
+  }, [currentUserId]);
 
   const formatDate = (dateString: string): string => {
     const eventDate = new Date(dateString);

@@ -11,7 +11,7 @@ import { getCurrentUser, setCurrentUser } from "../../services/user/user-slice";
 import { TGender, TUser } from "@api/types";
 import { getCurrentDateTimeString } from "../../shared/lib/helpers";
 import { getCategories, getSubcategories } from "../../services/categories/categories-slice";
-import { setIsOfferCreated } from "../../services/offers/offers-slice";
+import { clearOffersByMe } from "../../services/offers/offers-slice";
 import { getOfferUser } from "../../services/users/users-slice";
 import { addOfferThunk } from "../../services/offers/actions";
 
@@ -69,7 +69,7 @@ export const RegistrationFlow: React.FC = () => {
   const handleStep3Complete = (data: SkillFormData) => {
     setStep3Data(data);
     setCurrentUserHandle();
-    dispatch(setIsOfferCreated(false));
+    dispatch(clearOffersByMe())
     setSkillCardModalOpen(true);
     console.log("Данные регистрации:", { step1Data, step2Data, step3Data: data });
   };

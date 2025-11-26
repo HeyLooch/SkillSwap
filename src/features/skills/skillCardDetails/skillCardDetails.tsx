@@ -1,19 +1,18 @@
-import React from "react";
-import { RootState } from "@store";
-
+import clsx from "clsx";
+import { FC } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "../../../services/store";
+import { getCurrentUser } from "../../../services/user/user-slice";
 import { Gallery } from "../../../shared/ui/gallery/Gallery";
 import { useExchangeNotification } from "../../../shared/ui/notification/useExchangeNotification";
 import { ExchangeNotification } from "../../../shared/ui/notification/ExchangeNotification";
 import { Icon } from "../../../shared/ui/icon/Icon";
 import { Button } from "../../../shared/ui/button/Button";
 import photoPlaceholder from "../../../shared/assets/images/school-board.svg?.svg";
-import { useSelector } from "@store";
-import { getIsOfferCreated } from "../../../services/offers/offers-slice";
 import styles from './skillCardDetails.module.css';
-import { useNavigate } from "react-router-dom";
-import clsx from "clsx";
 
 type SkillCardDetailsProps = {
+  isOffered?: boolean; //true если уже заключали этот оффер
   checkEdit?: boolean;
   title: string;
   subtitle: string;
@@ -23,7 +22,8 @@ type SkillCardDetailsProps = {
   onExchange?: () => void;
 };
 
-export const SkillCardDetails: React.FC<SkillCardDetailsProps> = ({
+export const SkillCardDetails: FC<SkillCardDetailsProps> = ({
+  isOffered,
   checkEdit,
   title,
   subtitle,
@@ -35,20 +35,14 @@ export const SkillCardDetails: React.FC<SkillCardDetailsProps> = ({
   const navigate = useNavigate();
 
   const { isNotificationOpen, openNotification, closeNotification } = useExchangeNotification();
-  const isOfferReady = useSelector(getIsOfferCreated);
 
   // Получаем пользователя из Redux
-  const currentUser = useSelector((s: RootState) => s.user.user);
+  const currentUser = useSelector(getCurrentUser);
   const isUserLoggedIn = !!currentUser;
 
   // Клик по кнопке обмена
-  const handleExchangeClick = () => {
-    console.log('SkillCardDetails: Exchange button clicked, user logged in:', isUserLoggedIn);
-    
-    // Всегда вызываем onExchange - пусть родительский компонент решает что делать
+  const handleExchangeClick = () => {    
     onExchange?.();
-    
-    // Если пользователь авторизован, показываем уведомление
     if (isUserLoggedIn) {
       openNotification({
         type: "info",
@@ -91,7 +85,7 @@ export const SkillCardDetails: React.FC<SkillCardDetailsProps> = ({
               <h3 className={styles.subtitle}>{subtitle}</h3>
               <p className={styles.description}>{description}</p>
             </div>
-              {!isOfferReady && (
+              {!isOffered && (
                 <Button className={styles.buttonOffer}
                   colored
                   onClick={handleExchangeClick}
@@ -99,7 +93,7 @@ export const SkillCardDetails: React.FC<SkillCardDetailsProps> = ({
                   {buttonText}
                 </Button>
               )}
-              {isOfferReady && !currentUser && (
+              {isOffered && !currentUser && (
                 <Button
                   className={(styles.buttonOffer, styles.buttonOffer)}
                   onClick={handleExchangeClick}
@@ -107,7 +101,7 @@ export const SkillCardDetails: React.FC<SkillCardDetailsProps> = ({
                   <Icon name='clock'/> {buttonText}
               </Button>
               )}
-              {isOfferReady && currentUser && (
+              {isOffered && currentUser && (
                 <Button
                   className={(styles.buttonOffer, styles.buttonOfferReady)}
               >

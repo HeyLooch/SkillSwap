@@ -35,8 +35,8 @@ export const About: FC = () => {
           <h1 className={styles.sectionTitle}>SkillSwap</h1>
           <div className={styles.content}>
             <p className={styles.paragraph}>
-              <strong>SkillSwap</strong> — это учебный проект, реализованный как
-              одностраничное приложение (SPA) на стеке React + TypeScript +
+              <strong>SkillSwap</strong> — это проект, реализованный как
+              одностраничное приложение (SPA) на стеке React, Redux, TypeScript,
               Vite.
             </p>
             <p className={styles.paragraph}>

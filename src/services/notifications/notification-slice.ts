@@ -5,8 +5,8 @@ import { getNotificationThunk } from "./actions";
 interface notificationState {
   userID: number | null;
   events: TNotificationEvent[];
-  error: string | null;
   isLoading: boolean; 
+  error: string | null;
 }
 
 const initialState: notificationState = {
@@ -51,7 +51,6 @@ export const notificationSlice = createSlice({
     getError: (state) => state.error, 
     getIsLoading: (state) => state.isLoading,
     getUnseenCount: (state) => state.events.filter(event => event.seen === 0).length,
-    // Селекторы для разделения уведомлений
     getNewNotifications: (state) => state.events.filter(event => event.seen === 0),
     getViewedNotifications: (state) => state.events.filter(event => event.seen === 1)
   }

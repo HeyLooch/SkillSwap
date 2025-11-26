@@ -8,7 +8,7 @@ interface PlacesState {
   places: TPlace[];
   isLoading: boolean;
   error: string | null;
-};
+}
 
 const initialState: PlacesState = {
   places: [],

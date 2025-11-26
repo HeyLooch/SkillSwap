@@ -9,9 +9,9 @@ import { prepareSkillsToRender } from "../../../shared/lib/prepareSkillsToRender
 import { RootState, useDispatch, useSelector } from '@store';
 import { setOfferUser } from '../../../services/users/users-slice';
 import { birthdayToFormatedAge, getImageUrl } from "../../../shared/lib/helpers";
-import { getCurrentUser, setUser } from "../../../services/user/user-slice";
+import { getCurrentUser, setCurrentUser } from "../../../services/user/user-slice";
 import { toggleLikeAction } from "../../../services/users/actions";
-import { setIsOfferCreated } from "../../../services/offers/offers-slice";
+import { clearOffersByMe } from "../../../services/offers/offers-slice";
 import clsx from "clsx";
 import styles from "./UserCard.module.css";
 
@@ -58,8 +58,8 @@ const { skillsCanRender, isRest, rest } = prepareSkillsToRender(
             className={styles.avatar}
             onClick={() => {
               if (!(user.id === currUser?.id)) {
-                dispatch(setUser(user));
-                dispatch(setIsOfferCreated(false));
+                dispatch(setCurrentUser(user));
+                dispatch(clearOffersByMe());
               }
             }}
           />

@@ -1,6 +1,6 @@
 // src\widgets\header\Header.tsx
 
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, memo } from "react";
 import { Link } from "react-router-dom";
 import { Logo } from "../../shared/ui/logo/Logo";
 import { Button } from "../../shared/ui/button/Button";
@@ -10,7 +10,7 @@ import { getImageUrl } from "../../shared/lib/helpers";
 import { SearchBar } from "../../shared/ui/search-bar/SearchBar";
 import { Popup } from "../popup/Popup";
 import { SkillMenu } from "../SkillMenu/SkillMenu";
-import { getCurrentUser, setUser } from "../../services/user/user-slice";
+import { getCurrentUser, setCurrentUser } from "../../services/user/user-slice";
 import { ProfilePopup } from "../profile-popup/ProfilePopup";
 import { useDispatch, useSelector } from "@store";
 import { RootState } from "@store";
@@ -35,7 +35,6 @@ export const Header: FC = () => {
 
   const currentUser = useSelector(getCurrentUser);
   const randomUsers = useSelector(getRandomUsers);
-
   const currentTextForSearch = useSelector((rs: RootState) => rs.filters.text_for_search);
   const [query, setQuery] = useState(currentTextForSearch || '');
 
@@ -54,12 +53,12 @@ export const Header: FC = () => {
 
   const handleLogin = () => {
     if (randomUsers.length === 0) {
-      console.warn('Нет загруженных пользователей для входа');
+      console.log('Нет загруженных пользователей для входа');
       return;
     }
     const randomIndex = Math.floor(Math.random() * randomUsers.length);
     const randomUser = randomUsers[randomIndex];
-    dispatch(setUser(randomUser));
+    dispatch(setCurrentUser(randomUser));
   };
 
   return (
@@ -84,9 +83,7 @@ export const Header: FC = () => {
             <button
               data-popup-trigger
               className={clsx(styles.link, styles.dropButton)}
-              onClick={(e) => {
-                togglePopup(POPUP_TYPES.SKILLS);
-              }}
+              onClick={(e) => {togglePopup(POPUP_TYPES.SKILLS)}}
             >
               Все навыки
               <Icon

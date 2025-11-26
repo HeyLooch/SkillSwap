@@ -9,7 +9,7 @@ interface CategoriesState {
   subcategories: TSubcategory[];
   isLoading: boolean;
   error: string | null;
-};
+}
 
 const initialState: CategoriesState = {
   categories: [],

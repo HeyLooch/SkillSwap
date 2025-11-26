@@ -1,11 +1,11 @@
 // src\widgets\profile-popup\ProfilePopup.tsx
 
 import { useNavigate } from 'react-router-dom'
-import { Icon } from '../../shared/ui/icon/Icon'
-import styles from './ProfilePopup.module.css'
 import { useDispatch } from '@store';
 import { logoutThunk } from '../../services/user/actions';
-import { setIsOfferCreated } from '../../services/offers/offers-slice';
+import { clearOffersByMe } from '../../services/offers/offers-slice';
+import { Icon } from '../../shared/ui/icon/Icon'
+import styles from './ProfilePopup.module.css'
 
 type ProfilePopupProps = {
   onClose: () => void;
@@ -22,7 +22,7 @@ export const ProfilePopup = ({ onClose }: ProfilePopupProps) => {
 
   const logout = () => {
     dispatch(logoutThunk());
-    dispatch(setIsOfferCreated(false));
+    dispatch(clearOffersByMe());
     onClose();
     navigate("/");
   };

@@ -1,20 +1,20 @@
 // src\app\index.tsx
 
-import React from 'react';
-import * as ReactDOMClient from 'react-dom/client';
+import { createRoot } from  'react-dom/client';
+import { StrictMode } from 'react';
+import { Provider } from 'react-redux';
+import store from './services/store';
 import App from './app/App';
 import './normalize.css';
 import './index.css';
-import { Provider } from 'react-redux';
-import store from './services/store';
 
 const container = document.getElementById('root') as HTMLElement;
-const root = ReactDOMClient.createRoot(container!);
+const root = createRoot(container!);
 
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>
+  </StrictMode>
 );

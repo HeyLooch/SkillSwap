@@ -1,6 +1,5 @@
 .container {
   position: absolute;
-  /* left: 1056px; */
   right: 0;
   width: 260px;
   padding: 40px;
@@ -18,7 +17,6 @@
 
 .content li {
   cursor: pointer;
-  /* list-style: none; */
 }
 
 .logoutContainer {

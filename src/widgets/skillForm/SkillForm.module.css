@@ -1,7 +1,7 @@
 .wrapper {
   max-width: 556px;
   padding: 50px 60px;
-  background: #ffffff;
+  background-color: var(--color-bg-second);
   border-radius: 12px;
   margin: 0 auto;
   box-sizing: border-box;

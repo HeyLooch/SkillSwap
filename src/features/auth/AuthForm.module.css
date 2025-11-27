@@ -2,10 +2,9 @@
   max-width: 556px;
   height: 692px;
   padding: 123px 60px;
-  background: #ffffff;
+  color: var(--color-main);
+  background-color: var(--color-bg-second);
   border-radius: 12px;
-  align-items: center;
-  box-sizing: border-box;
 }
 
 .content {

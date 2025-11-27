@@ -7,7 +7,6 @@
 
 .label {
   font-size: 16px;
-  color: #253017;
   font-weight: 400;
 }
 
@@ -131,20 +130,14 @@
 }
 
 .error {
-  border-color: #bf3920 !important;
+  border-color: var(--color-error) !important;
 }
 
 .input:focus.error {
-  border-color: #bf3920 !important;
+  border-color: var(--color-error) !important;
 }
 
 .textError {
-  color: #bf3920;
   font-size: 12px;
-}
-
-.label {
-  font-size: 16px;
-  color: #253017;
-  font-weight: 400;
+  color: var(--color-error);
 }

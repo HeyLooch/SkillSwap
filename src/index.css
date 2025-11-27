@@ -8,14 +8,20 @@
 
 .light {
   --color-main: #253017;
+  --color-accent: #595e4f;
   --color-bg-main: #F9FAF7;
   --color-bg-second: #FFFFFF;
+  --color-bg-hover: #f2f3f1;
+  --color-error: #d11f00;
 }
 
 .dark {
   --color-main: #F9FAF7;
+  --color-accent: #afb8a1;
   --color-bg-main: #253017;
   --color-bg-second: #3a4b23;
+  --color-bg-hover: #253017;
+  --color-error: #d11f00;
 }
 
 body {

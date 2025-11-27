@@ -21,7 +21,7 @@
 .title {
   font-size: 18px;
   font-weight: 600;
-  /* color: #253017; */
+  color: var(--color-accent);
   margin-bottom: 16px;
 }
 

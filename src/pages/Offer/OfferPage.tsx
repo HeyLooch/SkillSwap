@@ -12,7 +12,7 @@ import { getOfferUser, getUsers } from '../../services/users/users-slice';
 import { Loader } from '../../shared/ui/loader/Loader';
 import { getCurrentUser } from '../../services/user/user-slice';
 import { addOfferThunk } from '../../services/offers/actions';
-import { getOffersByMe, setOfferByMe } from '../../services/offers/offers-slice';
+import { getOffersByMe } from '../../services/offers/offers-slice';
 
 import styles from './OfferPage.module.css';
 
@@ -32,16 +32,37 @@ export const OfferPage: React.FC = () => {
       navigate('/auth/register');
     }
     if (!isOffered && offerUser && currentUser?.subCategoryId) {
-      dispatch(setOfferByMe(offerUser.id));
       dispatch(addOfferThunk({
         offerUserId: offerUser.id,
-        skillOwnerId: currentUser.subCategoryId
+        skillOwnerId: currentUser.subCategoryId,
       }));
     }
   };
 
   if (!offerUser) {
     return <Loader />;
+  }
+
+  if (offerUser?.id === currentUser?.id) {
+    return (
+      <>
+      <SkillCardDetails 
+        checkEdit
+        title={currentUser.skill}
+        subtitle={currentUser.cat_text}
+        description={currentUser.description}
+        images={offerUser.images || ""}
+      />
+      <section>
+        <CardShowcase
+          title="Похожие предложения"
+          titleSize='1.5em'
+          icon={<Icon name="chevronRight" />}>
+            <CardSlider users={users}/>
+        </CardShowcase>
+      </section>
+      </>
+    )
   }
 
   return (

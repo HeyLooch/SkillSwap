@@ -94,5 +94,3 @@ export const {
   addCurrentOffers
 } = userSlice.actions;
 
-export const userReducer = userSlice.reducer;
-

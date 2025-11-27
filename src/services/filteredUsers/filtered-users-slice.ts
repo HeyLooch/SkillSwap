@@ -67,4 +67,3 @@ export const filteredUsersSlice = createSlice({
 });
 
 export const { resetFilteredUsers } = filteredUsersSlice.actions;
-export const filteredUsersReducer = filteredUsersSlice.reducer;

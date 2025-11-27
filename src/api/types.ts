@@ -1,7 +1,7 @@
 // src\api\types.ts
 
 import { TSkillType } from "../shared/types/filters";
-import { IconName } from "../shared/ui/icon/icons";
+import { IconName } from "../shared/ui/icon/iconsNameType";
 
 export const GENDERS = {
   MALE: 'male',

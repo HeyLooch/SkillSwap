@@ -11,7 +11,7 @@ interface CreatedAtUsersState {
   error: string | null;
   page: number;
   hasMore: boolean;
-};
+}
 
 const initialState: CreatedAtUsersState = {
   users: [],
@@ -67,4 +67,3 @@ export const createdAtUsersSlice = createSlice({
 });
 
 export const { resetCreatedAtUsers } = createdAtUsersSlice.actions;
-export const createdAtUsersReducer = createdAtUsersSlice.reducer;

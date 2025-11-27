@@ -1,18 +1,19 @@
 .filtersContainer {
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 24px;
   max-width: 324px;
   width: 100%;
   height: fit-content;
+  padding: 24px;
+  color: var(--color-main);
+  background-color: var(--color-bg-second);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .filtersTitle {
   font-family: 'Jost';
   font-size: 24px;
   font-weight: 500;
-  color: #253017;
+  /* color: #253017; */
   margin-bottom: 24px;
   padding-bottom: 16px;
  }
@@ -41,4 +42,5 @@
   cursor: pointer;
   margin-top: 8px;
 }
+
 .resetButton:hover { opacity: .85; }

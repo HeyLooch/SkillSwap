@@ -1,8 +1,20 @@
-// src/app/App.tsx
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-
+import { getTheme } from "../services/theme/theme-slice";
+import { getUsersThunk } from "../services/users/actions";
+import { getOffersThunk } from "../services/offers/actions";
+import { getPlacesThunk } from "../services/places/actions";
+import { getCurrentUser } from "../services/user/user-slice";
+import { getUserLikesThunk } from "../services/user/actions";
+import { getCategoriesThunk } from "../services/categories/actions";
+import { getRandomUsersThunk } from "../services/randomUsers/actions";
+import { getPopularUsersThunk } from "../services/popularUsers/actions";
+import { getCreatedAtUsersThunk } from "../services/createdAtUsers/actions";
+import { useDispatch } from "../services/store";
+import { useSelector } from "../services/store";
+import { AuthForm } from "../features/auth/AuthForm";
+import { RegistrationFlow } from "../features/registration/RegistrationFlow";
+import { ScrollToTop } from "../features/scrollToTop/ScrollToTop";
 import {
   DropdownDemo,
   DropdownGroupedDemo,
@@ -10,44 +22,16 @@ import {
   Header,
   SkillForm,
 } from "@widgets";
-
-import { ServerErrorPage } from "../pages/server-error-page/ServerErrorPage";
-import { NotFoundPage } from "../pages/not-found-page/NotFoundPage";
-
-//То, что есть
-import { HomePage } from "../pages/HomePage";
-import { ProfilePage } from "../pages/profile/ProfilePage";
-
-// Страницы регистрации
 import { RegistrationStep1 } from "../pages/registration/RegistrationStep1";
 import { RegistrationStep2 } from "../pages/registration/RegistrationStep2";
 import { RegistrationStep3 } from "../pages/registration/RegistrationStep3";
-
-//Данные/типы/стор (для каталога)
-import { useDispatch } from "@store";
-import { useSelector } from "@store";
-import { AuthForm } from "@features";
-
-import { getCurrentUser } from "../services/user/user-slice";
-import { getPlacesThunk } from "../services/places/actions";
-import { getCategoriesThunk } from "../services/categories/actions";
-import { getUserLikesThunk } from "../services/user/actions";
-
+import { ServerErrorPage } from "../pages/server-error-page/ServerErrorPage";
+import { NotFoundPage } from "../pages/not-found-page/NotFoundPage";
+import { ProfilePage } from "../pages/profile/ProfilePage";
 import { OfferPage } from "../pages/Offer/OfferPage";
-import { getPopularUsersThunk } from "../services/popularUsers/actions";
-
-import { ScrollToTop } from "../features/scrollToTop/ScrollToTop";
-
-import { getCreatedAtUsersThunk } from "../services/createdAtUsers/actions";
-import { getRandomUsersThunk } from "../services/randomUsers/actions";
-
+import { HomePage } from "../pages/HomePage";
 import { About } from "../pages/about/About";
-import { getOffersThunk } from "../services/offers/actions";
-// import { getOffers } from "../services/offers/offers-slice";
-import { getUsersThunk } from "../services/users/actions";
-import { RegistrationFlow } from "../features/registration/RegistrationFlow";
 // import { getFilteredUsersThunk } from "../services/filteredUsers/actions";
-
 import styles from "./App.module.css";
 
 export const App: React.FC = () => {
@@ -62,17 +46,24 @@ export const App: React.FC = () => {
     dispatch(getPlacesThunk());
     dispatch(getCategoriesThunk());
   }, [dispatch]);
-
+  
   const currentUser = useSelector(getCurrentUser);
-  // const offers = useSelector(getOffers);
 
-  // лайки грузятся при смене пользователя
+// лайки грузятся при смене пользователя
   useEffect(() => {
     if (currentUser) {
       dispatch(getUserLikesThunk(currentUser.id));
     }
-  // }, [currentUser, offers]);
   }, [currentUser]);
+
+// смена темы
+  const body =  document.documentElement;
+  const theme = useSelector(getTheme);
+
+  useEffect(() => {
+    body.classList.remove('light', 'dark');
+    body.classList.add(theme);
+  }, [theme])
 
   return (
     <BrowserRouter>

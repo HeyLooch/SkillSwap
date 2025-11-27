@@ -1,5 +1,3 @@
-// src\features\filters\FiltersContainer.tsx
-
 import React from "react";
 import styles from "./FiltersContainer.module.css";
 

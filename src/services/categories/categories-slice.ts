@@ -46,4 +46,3 @@ export const categoriesSlice = createSlice({
 });
 
 export const { getCategories, getSubcategories, getLoadingCatSubcat } = categoriesSlice.selectors;
-export const categoriesReducer = categoriesSlice.reducer;

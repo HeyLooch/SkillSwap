@@ -110,4 +110,3 @@ export const usersSlice = createSlice({
 
 export const { getUsers, getOfferUser, getPlainUsers } = usersSlice.selectors;
 export const { setPage, setHasMore, resetUsers, setOfferUser } = usersSlice.actions;
-export const usersReducer = usersSlice.reducer;

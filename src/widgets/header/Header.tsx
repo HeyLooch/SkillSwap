@@ -1,23 +1,24 @@
 // src\widgets\header\Header.tsx
 
-import { FC, useEffect, useState, memo } from "react";
+import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Logo } from "../../shared/ui/logo/Logo";
-import { Button } from "../../shared/ui/button/Button";
-import { NotificationWidget } from "../notification-widget/NotificationWidget";
-import { Icon } from "../../shared/ui/icon/Icon";
-import { getImageUrl } from "../../shared/lib/helpers";
-import { SearchBar } from "../../shared/ui/search-bar/SearchBar";
-import { Popup } from "../popup/Popup";
-import { SkillMenu } from "../SkillMenu/SkillMenu";
-import { getCurrentUser, setCurrentUser } from "../../services/user/user-slice";
-import { ProfilePopup } from "../profile-popup/ProfilePopup";
 import { useDispatch, useSelector } from "@store";
 import { RootState } from "@store";
+import { getTheme, toggleTheme } from "../../services/theme/theme-slice";
 import { getRandomUsers } from "../../services/randomUsers/random-users-slice";
 import { setTextForSearch } from "../../services/filters/filters-slice";
 import { reloadFilteredUsers } from "../../services/filteredUsers/actions";
+import { getCurrentUser, setCurrentUser } from "../../services/user/user-slice";
 import useDebounced from "../../shared/hooks/useDebounced";
+import { NotificationWidget } from "../notification-widget/NotificationWidget";
+import { Logo } from "../../shared/ui/logo/Logo";
+import { Button } from "../../shared/ui/button/Button";
+import { Icon } from "../../shared/ui/icon/Icon";
+import { getImageUrl } from "../../shared/lib/helpers";
+import { SearchBar } from "../../shared/ui/search-bar/SearchBar";
+import { ProfilePopup } from "../profile-popup/ProfilePopup";
+import { SkillMenu } from "../SkillMenu/SkillMenu";
+import { Popup } from "../popup/Popup";
 import clsx from "clsx";
 import styles from "./Header.module.css";
 
@@ -33,6 +34,7 @@ export const Header: FC = () => {
   const dispatch = useDispatch();
   const [isOpenPopup, setOpenPopup] = useState<PopupType>(null);
 
+  const theme = useSelector(getTheme);
   const currentUser = useSelector(getCurrentUser);
   const randomUsers = useSelector(getRandomUsers);
   const currentTextForSearch = useSelector((rs: RootState) => rs.filters.text_for_search);
@@ -108,8 +110,15 @@ export const Header: FC = () => {
       />
 
       {!currentUser && (
-        <button className={styles.moonButton}>
-          <Icon name="moon" size="s" />
+        <button 
+          className={styles.moonButton}
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === 'light' ? (
+            <Icon name="moon" size="s" />
+          ) : (
+            <Icon name="sun" size="s" />
+          )}
         </button>
       )}
 
@@ -117,8 +126,15 @@ export const Header: FC = () => {
         {/* Иконки уведомлений и лайков только для авторизованных */}
         {currentUser && (
           <>
-            <button className={styles.moonButton}>
-              <Icon name="moon" size="s" />
+            <button 
+              className={styles.moonButton}
+              onClick={() => dispatch(toggleTheme())}
+            >
+              {theme === 'light' ? (
+                <Icon name="moon" size="s" />
+              ) : (
+                <Icon name="sun" size="s" />
+              )}
             </button>
             <button
               data-popup-trigger

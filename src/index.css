@@ -6,6 +6,19 @@
   padding: 0; 
 }
 
+.light {
+  --color-main: #253017;
+  --color-bg-main: #F9FAF7;
+  --color-bg-second: #FFFFFF;
+}
+
+.dark {
+  --color-main: #F9FAF7;
+  --color-bg-main: #253017;
+  --color-bg-second: #3a4b23;
+}
+
 body {
-  background-color: #F9FAF7;
+  color: var(--color-main);
+  background-color: var(--color-bg-main);
 }

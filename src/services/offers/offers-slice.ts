@@ -1,5 +1,4 @@
-// src\services\user\user-slice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { TOffer } from '../../api/types';
 import { addOfferThunk, getOffersThunk } from './actions';
 
@@ -21,9 +20,6 @@ export const offersSlice = createSlice({
   name: 'offers',
   initialState,
   reducers: {
-    setOfferByMe: (state, action: PayloadAction<number>) => {
-      state.offersByMe.push(action.payload);
-    },
     clearOffersByMe: (state) => {
       state.offersByMe = [];
     }
@@ -55,6 +51,7 @@ export const offersSlice = createSlice({
     .addCase(addOfferThunk.fulfilled, (state, action) => {
         state.isLoading = false;
         state.offers.push(action.payload);
+        state.offersByMe.push(action.payload.offerUserId);
     })
     .addCase(addOfferThunk.rejected, (state, action) => {
         state.isLoading = false;
@@ -64,7 +61,5 @@ export const offersSlice = createSlice({
 });
 
 export const { getOffers, getOffersByMe } = offersSlice.selectors;
-export const { setOfferByMe, clearOffersByMe } = offersSlice.actions;
-
-export const offersReducer = offersSlice.reducer;
+export const { clearOffersByMe } = offersSlice.actions;
 

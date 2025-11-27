@@ -36,5 +36,3 @@ export const placesSlice = createSlice({
       });
   }
 });
-
-export const placesReducer = placesSlice.reducer;

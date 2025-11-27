@@ -1,6 +1,4 @@
-// src\shared\ui\icon\icons.ts
-
-export type IconName =
+export type TIconName =
   | 'add'
   | 'apple'
   | 'book'
@@ -38,4 +36,5 @@ export type IconName =
   | 'userCircle'
   | 'github'
   | 'cross'
-  | 'clock';
+  | 'clock'
+  | 'sun';

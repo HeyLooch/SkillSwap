@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ProfileMenu.module.css";
 import { ProfileMenuItem } from "./ProfileMenuItem";
-import { IconName } from "../../shared/ui/icon/icons";
+import { IconName } from "../../shared/ui/icon/iconsNameType";
 
 type TabType = "requests" | "exchanges" | "favorites" | "skills" | "personal";
 

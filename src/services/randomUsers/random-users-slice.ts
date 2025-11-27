@@ -11,7 +11,7 @@ interface RandomUsersState {
   error: string | null;
   page: number;
   hasMore: boolean;
-};
+}
 
 const initialState: RandomUsersState = {
   users: [],
@@ -70,4 +70,3 @@ export const randomUsersSlice = createSlice({
 
 export const { getRandomUsers } = randomUsersSlice.selectors;
 export const { resetRandomUsers } = randomUsersSlice.actions;
-export const randomUsersReducer = randomUsersSlice.reducer;

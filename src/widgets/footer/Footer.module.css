@@ -4,12 +4,11 @@
   left: 0;
   right: 0;
   max-width: 1368px;
-  /* width: 100%; */
   max-height: 232px;
   margin: 0 auto;
   padding: 25px 32px 20px;
-  /* background-color: #F9FAF7; */
-  background: linear-gradient(#f4fae7, #FFFFFF);
+  color: var(--color-main);
+  background: linear-gradient(var(--color-bg-main), var(--color-bg-second));
   z-index: 100;
 }
 
@@ -31,10 +30,6 @@
   width: 300px;
   flex-direction: column;
   gap: 5px;
-}
-
-.link {
-  color: #253017;
 }
 
 .copyright {

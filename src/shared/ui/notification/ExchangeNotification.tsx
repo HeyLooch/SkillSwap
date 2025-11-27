@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ExchangeNotification.module.css";
 import { Button } from "../button/Button";
 import { Icon } from "../icon/Icon";
-import { IconName } from "../icon/icons";
+import { IconName } from "../icon/iconsNameType";
 import { Modal } from "../modal/Modal";
 
 interface ExchangeNotificationProps {

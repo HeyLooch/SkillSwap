@@ -3,6 +3,7 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "../../../services/store";
 import { getCurrentUser } from "../../../services/user/user-slice";
+import { getOfferUser } from "../../../services/users/users-slice";
 import { Gallery } from "../../../shared/ui/gallery/Gallery";
 import { useExchangeNotification } from "../../../shared/ui/notification/useExchangeNotification";
 import { ExchangeNotification } from "../../../shared/ui/notification/ExchangeNotification";
@@ -38,12 +39,13 @@ export const SkillCardDetails: FC<SkillCardDetailsProps> = ({
 
   // Получаем пользователя из Redux
   const currentUser = useSelector(getCurrentUser);
+  const offerUser = useSelector(getOfferUser);
   const isUserLoggedIn = !!currentUser;
 
   // Клик по кнопке обмена
   const handleExchangeClick = () => {    
     onExchange?.();
-    if (isUserLoggedIn) {
+    if (isUserLoggedIn && currentUser?.id !== offerUser?.id ) {
       openNotification({
         type: "info",
         title: "Ваше предложение создано",

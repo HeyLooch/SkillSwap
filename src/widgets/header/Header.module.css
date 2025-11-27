@@ -24,7 +24,7 @@
 }
 
 .link {
-  color: #253017;
+  color: var(--color-main);
   background-color: transparent;
   letter-spacing: 0.0224em;
   cursor: pointer;

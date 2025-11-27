@@ -76,5 +76,3 @@ export const {
   setTextForSearch,
   resetFilters
 } = filtersSlice.actions;
-
-export const filtersReducer = filtersSlice.reducer;

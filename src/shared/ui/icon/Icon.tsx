@@ -1,9 +1,7 @@
-// src\shared\ui\icon\Icon.tsx
-
 import { FC } from "react";
 import clsx from "clsx";
 import styles from "./Icon.module.css";
-import { IconName } from "./icons";
+import { TIconName } from "./iconsNameType";
 
 // Импорт всех иконок как React-компоненты (поэтому с большой буквы + добавляем ?react)
 import AddIcon from "../../assets/icons/add.svg?react";
@@ -53,7 +51,7 @@ import RequestIcon from "../../assets/icons/request.svg?react";
 import SearchIcon from "../../assets/icons/search.svg?react";
 import ShareIcon from "../../assets/icons/share.svg?react";
 import SortIcon from "../../assets/icons/sort.svg?react";
-// import SunIcon from "../../assets/icons/sun.svg?react";
+import SunIcon from "../../assets/icons/sun.svg?react";
 import UserCircleIcon from "../../assets/icons/user-circle.svg?react";
 import UserIcon from "../../assets/icons/user.svg?react";
 import GitIcon from "../../assets/icons/github.svg?react";
@@ -80,12 +78,12 @@ const icons = {
   home: HomeIcon,
   idea: IdeaIcon,
   like: LikeIcon,
- 'like-active': LikeActiveIcon,
   lifestyle: LifeStyleIcon,
   logo: LogoIcon,
   logout: LogoutIcon,
   messagetext: MessageIcon,
   moon: MoonIcon,
+  sun: SunIcon,
   more: MoreIcon,
   notification: NotificationIcon,
   palette: PaletteIcon,
@@ -97,12 +95,13 @@ const icons = {
   userCircle: UserCircleIcon,
   github: GitIcon,
   cross: CrossIcon,
-  clock: ClockIcon
+  clock: ClockIcon,
+  'like-active': LikeActiveIcon,
 } as const;
 
 
 interface IconProps {
-  name: IconName;
+  name: TIconName;
   size?: "s" | "m" | "l" | number;
   className?: string;
   color?: string;

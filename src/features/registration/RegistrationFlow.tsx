@@ -14,9 +14,11 @@ import { getCategories, getSubcategories } from "../../services/categories/categ
 import { clearOffersByMe } from "../../services/offers/offers-slice";
 import { getOfferUser } from "../../services/users/users-slice";
 import { addOfferThunk } from "../../services/offers/actions";
+import { useNavigate } from "react-router-dom";
 
 export const RegistrationFlow: React.FC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const currentUser = useSelector(getCurrentUser);
   const offerUser = useSelector(getOfferUser);
@@ -122,6 +124,7 @@ export const RegistrationFlow: React.FC = () => {
                       skillOwnerId: currentUser.subCategoryId
                     }));
                   }
+              navigate('/');
             }}
            />
         </Modal>

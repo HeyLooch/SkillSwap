@@ -70,5 +70,3 @@ export const {
   getNewNotifications,
   getViewedNotifications
 } = notificationSlice.selectors;
-
-export const notificationReducer = notificationSlice.reducer;

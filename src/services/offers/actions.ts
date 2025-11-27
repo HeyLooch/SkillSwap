@@ -13,7 +13,7 @@ export const getOffersThunk = createAsyncThunk(
 
 export const addOfferThunk = createAsyncThunk<
 TOffer, 
-{ offerUserId: number; skillOwnerId: number }
+{ offerUserId: number; skillOwnerId: number; }
 >(
   FETCH_ADD_OFFER,
   async ({ offerUserId, skillOwnerId }) => {

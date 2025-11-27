@@ -11,7 +11,7 @@ interface PopularUsersState {
   error: string | null;
   page: number;
   hasMore: boolean;
-};
+}
 
 const initialState: PopularUsersState = {
   users: [],
@@ -65,6 +65,3 @@ export const popularUsersSlice = createSlice({
       });
   },
 });
-
-export const { resetPopularUsers } = popularUsersSlice.actions;
-export const popularUsersReducer = popularUsersSlice.reducer;

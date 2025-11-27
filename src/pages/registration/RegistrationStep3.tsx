@@ -1,9 +1,10 @@
 import React from "react";
-import { RegistrationOnBoarding } from "../../features/onboarding/registrationBoard";
+import { Link, useNavigate } from "react-router-dom";
 import { onBoarding } from "../../features/onboarding/registrationBoard";
+import { RegistrationOnBoarding } from "../../features/onboarding/registrationBoard";
 import { SkillForm, SkillFormData } from "../../widgets/skillForm/SkillForm";
-import { RegistrationProgress } from "../../shared/ui/RegistrationProgress/RegistrationProgress";
 import { Icon } from "../../shared/ui/icon/Icon";
+import { RegistrationProgress } from "../../shared/ui/RegistrationProgress/RegistrationProgress";
 import styles from "./RegistrationPages.module.css";
 
 interface RegistrationStep3Props {
@@ -17,13 +18,16 @@ export const RegistrationStep3: React.FC<RegistrationStep3Props> = ({
   onComplete,
   onClose,
 }) => {
+  const navigate = useNavigate();
   return (
     <div className={styles.registrationPage}>
       <div className={styles.registrationHeader}>
-        <div className={styles.logo}>
-          <Icon name="logo" size={40} />
-          <span>SkillSwap</span>
-        </div>
+        <Link to='/'>
+          <div className={styles.logo}>
+            <Icon name="logo" size={40} />
+            <span>SkillSwap</span>
+          </div>
+        </Link>
         <button className={styles.closeButton} onClick={() => navigate(-1)}>
           Закрыть
           <Icon name="cross" size={24} />

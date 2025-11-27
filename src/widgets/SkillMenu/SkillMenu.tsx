@@ -1,4 +1,4 @@
-import { SkillMenuCategories } from './skillMenuCategory/skillMenuCategory';
+import { SkillMenuCategories } from './skillMenuCategory/SkillMenuCategory';
 import { useSelector } from '@store';
 import { getCategories, getSubcategories, getLoadingCatSubcat } from '../../services/categories/categories-slice';
 import { Loader } from '../../shared/ui/loader/Loader';

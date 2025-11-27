@@ -1,11 +1,12 @@
 .registrationPage {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
-  background: #f8f9fa;
-  overflow-y: auto;
+  width: 100%;
+  height: auto;
   padding-bottom: 40px;
+  overflow-y: auto;
+  color: var(--color-main);
+  background-color: var(--color-bg-main);
   border-radius: 12px;
 }
 
@@ -14,7 +15,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 40px 36px 0 36px;
-  background: #f8f9fa;
+  /* color: var(--color-main); */
+  /* background: #f8f9fa; */
 }
 
 .logo {
@@ -24,11 +26,9 @@
   font-family: 'Jost', sans-serif;
   font-size: 24px;
   font-weight: 600;
-  color: #253017;
 }
 
 .closeButton {
-  background: #fff;
   border: none;
   cursor: pointer;
   padding: 8px;
@@ -36,7 +36,6 @@
 }
 
 .progressSection {
-  background: #f8f9fa;
   padding: 20px;
 }
 
@@ -57,7 +56,6 @@
   width: 100%;
   justify-content: center;
   margin: 0 auto;
-
 }
 
 .formSection {

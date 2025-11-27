@@ -45,11 +45,10 @@
   gap: 8px;
   height: 48px;
   padding: 12px 24px;
-  background: #FFFFFF;
-  border-radius: 12px;
   font-size: 16px;
   line-height: 24px;
-  color: #253017;
+  background-color: var(--color-bg-second);
+  border-radius: 12px;
 }
 
 .chipText { white-space: nowrap; }

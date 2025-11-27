@@ -19,8 +19,9 @@
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
   flex-shrink: 0;
+  border-radius: 50%;
+  color: #253017; 
 }
 
 .div {
@@ -32,13 +33,19 @@
 .ul {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* gap: 12px; */
 }
 
 .li {
+  padding: 6px;
   font-size: 16px;
   list-style-type: none;
+  border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.li:hover {
+  background-color: var(--color-bg-hover);
 }
 
 .category_title {

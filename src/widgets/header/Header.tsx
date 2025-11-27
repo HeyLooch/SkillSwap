@@ -117,7 +117,7 @@ export const Header: FC = () => {
           {theme === 'light' ? (
             <Icon name="moon" size="s" />
           ) : (
-            <Icon name="sun" size="s" />
+            <Icon name="sun" size="s" color="#fff"/>
           )}
         </button>
       )}
@@ -133,7 +133,7 @@ export const Header: FC = () => {
               {theme === 'light' ? (
                 <Icon name="moon" size="s" />
               ) : (
-                <Icon name="sun" size="s" />
+                <Icon name="sun" size="s" color="#fff"/>
               )}
             </button>
             <button

@@ -1,14 +1,15 @@
 import React from "react";
-import { RegistrationOnBoarding } from "../../features/onboarding/registrationBoard";
-import { onBoarding } from "../../features/onboarding/registrationBoard";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   RegisterStep2,
   RegisterStep2Data,
 } from "../../features/auth/RegisterStep2";
+import { RegistrationOnBoarding } from "../../features/onboarding/registrationBoard";
+import { onBoarding } from "../../features/onboarding/registrationBoard";
 import { RegistrationProgress } from "../../shared/ui/RegistrationProgress/RegistrationProgress";
 import { Icon } from "../../shared/ui/icon/Icon";
 import styles from "./RegistrationPages.module.css";
-import { useNavigate } from "react-router-dom";
 
 interface RegistrationStep2Props {
   onBack: () => void;
@@ -25,10 +26,12 @@ export const RegistrationStep2: React.FC<RegistrationStep2Props> = ({
   return (
     <div className={styles.registrationPage}>
       <div className={styles.registrationHeader}>
-        <div className={styles.logo}>
-          <Icon name="logo" size={40} />
-          <span>SkillSwap</span>
-        </div>
+        <Link to='/'>
+          <div className={styles.logo}>
+            <Icon name="logo" size={40} />
+            <span>SkillSwap</span>
+          </div>
+        </Link>
         <button className={styles.closeButton} onClick={() => navigate(-1)}>
           Закрыть
           <Icon name="cross" size={24} />

@@ -29,6 +29,7 @@ export const RegistrationStep1: React.FC<RegistrationStep1Props> = ({
           <Icon name="cross" size={24} />
         </button>
       </div>
+      
       <div className={styles.progressSection}>
         <RegistrationProgress currentStep={1} totalSteps={3} />
       </div>

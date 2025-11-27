@@ -1,7 +1,8 @@
 .registerStep2 {
   max-width: 556px;
   padding: 40px 60px;
-  background: #ffffff;
+  color: var(--color-main);
+  background-color: var(--color-bg-second);
   border-radius: 12px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -18,6 +19,7 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  color: var(--color-main);
 }
 
 .row {
@@ -52,14 +54,13 @@
 .avatar {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .avatarIcon {
   width: 54px;
   height: 54px;
-  color: #253017;
 }
 
 .addButton {
@@ -76,13 +77,12 @@
 }
 
 .addButton:hover {
-  background: #9bc86a;
+  background-color: #9bc86a;
 }
 
 .addIcon {
   width: 16px;
   height: 16px;
-  color: #fff;
 }
 
 .buttons {
@@ -94,7 +94,7 @@
 .loading {
   text-align: center;
   padding: 40px;
-  color: #69735d;
+  color: var(--color-main);
 }
 
 .backButton {
@@ -102,9 +102,9 @@
 }
 
 .backButton:hover {
-  border-color: #deebc5 !important;
+  /* border-color: #deebc5 !important; */
 }
 
 .continueButton {
-  color: #253017;
+  /* color: #253017; */
 }

@@ -3,13 +3,13 @@ import { useSelector } from 'react-redux';
 import { RootState, useDispatch } from '@store';
 
 import { GENDERS, TGender } from '@api/types';
-import { SKILL_TYPES, TSkillType } from '../shared/types/filters';
+import { SKILL_TYPES, TSkillType } from '../../shared/types/filters';
 
-import { getPopularUsersThunk } from '../services/popularUsers/actions';
-import { getCreatedAtUsersThunk } from '../services/createdAtUsers/actions';
-import { getRandomUsersThunk } from '../services/randomUsers/actions';
-import { reloadFilteredUsers } from '../services/filteredUsers/actions';
-import { resetFilteredUsers } from '../services/filteredUsers/filtered-users-slice';
+import { getPopularUsersThunk } from '../../services/popularUsers/actions';
+import { getCreatedAtUsersThunk } from '../../services/createdAtUsers/actions';
+import { getRandomUsersThunk } from '../../services/randomUsers/actions';
+import { reloadFilteredUsers } from '../../services/filteredUsers/actions';
+import { resetFilteredUsers } from '../../services/filteredUsers/filtered-users-slice';
 import {
   getSkillType,
   getSubcategories,
@@ -21,17 +21,17 @@ import {
   setPlaces,
   isFiltersEmpty,
   resetFilters,
-} from '../services/filters/filters-slice';
+} from '../../services/filters/filters-slice';
 
 import { FilterSection } from '@features';
-import { SkillFilters } from '../features/filters/SkillFilters';
-import { FiltersContainer } from '../features/filters/FiltersContainer';
-import { ActiveFiltersBar } from '../features/filters/ActiveFiltersBar';
+import { SkillFilters } from '../../features/filters/SkillFilters';
+import { FiltersContainer } from '../../features/filters/FiltersContainer';
+import { ActiveFiltersBar } from '../../features/filters/ActiveFiltersBar';
 
 import { GridList } from '@widgets';
-import { CardShowcase, SHOWCASE_TITLES } from '../widgets/cardShowcase/CardShowcase';
+import { CardShowcase, SHOWCASE_TITLES } from '../../widgets/cardShowcase/CardShowcase';
 
-import { Icon } from '../shared/ui/icon/Icon';
+import { Icon } from '../../shared/ui/icon/Icon';
 import styles from './HomePage.module.css';
 
 export const HomePage = () => {

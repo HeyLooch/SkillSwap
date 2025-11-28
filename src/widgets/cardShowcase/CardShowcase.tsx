@@ -20,7 +20,7 @@ type CardShowcaseProps = {
   icon?: ReactElement;
   isIconFirst?: boolean;
   titleSize?: string;
-  onButtonClick?: () => void; // ← вот это добавляем
+  onButtonClick?: () => void;
 };
 
 
@@ -32,7 +32,7 @@ export const CardShowcase = ({
   icon,
   isIconFirst,
   titleSize = '2em',
-  onButtonClick, // ← добавляем сюда
+  onButtonClick,
 }: CardShowcaseProps) => {
 
   const showHideRowsHandle = () => {

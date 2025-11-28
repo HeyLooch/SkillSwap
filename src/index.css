@@ -12,6 +12,7 @@
   --color-bg-main: #F9FAF7;
   --color-bg-second: #FFFFFF;
   --color-bg-hover: #f2f3f1;
+  --color-bg-accent: #f2f3f1;
   --color-error: #d11f00;
 }
 
@@ -21,6 +22,7 @@
   --color-bg-main: #253017;
   --color-bg-second: #3a4b23;
   --color-bg-hover: #253017;
+  --color-bg-accent: #b2c797;
   --color-error: #d11f00;
 }
 

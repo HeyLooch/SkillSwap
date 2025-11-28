@@ -130,11 +130,7 @@ export const Header: FC = () => {
               className={styles.moonButton}
               onClick={() => dispatch(toggleTheme())}
             >
-              {theme === 'light' ? (
                 <Icon name="moon" size="s" />
-              ) : (
-                <Icon name="sun" size="s" color="#fff"/>
-              )}
             </button>
             <button
               data-popup-trigger

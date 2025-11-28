@@ -5,7 +5,7 @@
   padding: 40px;
   border: 1px solid #69735D;
   border-radius: 12px;
-  background-color: #fff;
+  background-color: var(--color-bg-second);
 }
 
 .content {

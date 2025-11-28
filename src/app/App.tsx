@@ -29,7 +29,7 @@ import { ServerErrorPage } from "../pages/server-error-page/ServerErrorPage";
 import { NotFoundPage } from "../pages/not-found-page/NotFoundPage";
 import { ProfilePage } from "../pages/profile/ProfilePage";
 import { OfferPage } from "../pages/Offer/OfferPage";
-import { HomePage } from "../pages/HomePage";
+import { HomePage } from "../pages/home-page/HomePage";
 import { About } from "../pages/about/About";
 // import { getFilteredUsersThunk } from "../services/filteredUsers/actions";
 import styles from "./App.module.css";

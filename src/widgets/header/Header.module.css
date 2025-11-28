@@ -72,6 +72,7 @@ li:has(img) {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-main);
 }
 
 /* Отступы между иконками в правой секции */
@@ -98,7 +99,6 @@ li:has(img) {
 .userName {
   font-weight: 400;
   font-size: 16px;
-  color: #253017;
   white-space: nowrap;
 }
 
